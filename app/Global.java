@@ -2,7 +2,6 @@ import models.SurferDB;
 import models.UserInfoDB;
 import play.Application;
 import play.GlobalSettings;
-import play.Play;
 import views.formdata.SurferFormData;
 
 /**
@@ -18,10 +17,10 @@ public class Global extends GlobalSettings {
    * @param app The application.
    */
   public void onStart(Application app) {
-    String adminEmail = Play.application().configuration().getString("surferpedia.admin.email");
-    String adminPassword = Play.application().configuration().getString("surferpedia.admin.password");
+    //String adminEmail = Play.application().configuration().getString("surferpedia.admin.email");
+    //String adminPassword = Play.application().configuration().getString("surferpedia.admin.password");
 
-    UserInfoDB.defineAdmin("Administrator", adminEmail, adminPassword);
+    UserInfoDB.defineAdmin("Administrator", "admin@admin.com", "adminpass");
 
     if (SurferDB.getSurfers().isEmpty()) {
 

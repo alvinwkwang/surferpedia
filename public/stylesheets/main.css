@@ -1,0 +1,83 @@
+body {
+  background: url('../images/water.jpg') bottom no-repeat fixed;
+}
+
+.header {
+  background: url('../images/header.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+}
+
+.bio-image, .carousel-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+
+.well {
+  background-color: white;
+  margin-bottom: 75px;
+}
+.navbar {
+  border-radius: 0;
+}
+
+.search {
+  width: 300px;
+}
+
+.form-group-search {
+  margin-top: 15px;
+  width: 200px;
+  margin-left: 25px;
+}
+
+.form-button-search {
+  margin-top: 15px;
+  margin-left: 25px;
+}
+
+.carousel-caption a:link, .carousel-caption a:visited, .carousel-caption a:hover, .carousel-caption a:active {
+  color: white;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #E1E1E1;
+}
+
+thead {
+  background-color: #d1d1d1;
+}
+
+.navbar {
+  background-color: #053376;
+}
+
+.navbar-toggle {
+  background-color: #053376;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: #053376;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: #053376;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  background-color: #053376;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #0670AA;
+}
+
+.dropdown-menu {
+  background-color: #053376;
+}
+
+.dropdown {
+  margin-right: 20px;
+}

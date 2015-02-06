@@ -1,0 +1,29 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, updates: List[Updates], 
+searchForm: Form[views.formdata.SearchFormData], surferTypes: Map[String, Boolean], countries: Map[String, Boolean])
+
+@Main(page, isLoggedIn, userInfo, searchForm, surferTypes, countries) {
+   <div class="container">
+   <div class="col-md-12">
+    <div class="well">
+     <h1>Change Log</h1>
+     <p><b>Total Changes To Date: <span class="badge">@updates.size()</span></b></p>
+     <table class="table table-striped table-bordered table-condensed table-hover">
+       <thead>
+         <tr>
+           <th>Date</th>
+           <th>Action</th>
+           <th>Surfer</th>
+         </tr>
+       </thead>
+       @for(update <- updates) {
+         <tr>
+         <td>@update.getDate()</td>
+         <td>@update.getAction()</td>
+         <td>@update.getName()</td>
+         </tr>
+       }
+     </table>
+   </div>
+   </div>
+   </div>
+}

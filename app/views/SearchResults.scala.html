@@ -1,0 +1,67 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, surferTypes: Map[String, Boolean], 
+countries: Map[String, Boolean], results: com.avaje.ebean.Page[Surfer], searchForm: Form[views.formdata.SearchFormData],
+key: String, surferType: String, surferCountry: String)
+
+@import helper._ 
+ 
+@Main(page, isLoggedIn, userInfo, searchForm, surferTypes, countries) {
+<div class="container">
+<div class="col-md-12">
+    <div class="well">
+	<h1>Search Results for @if(key == "") {} else { | '@key'} | @if(surferType == "") {All Types} else {@surferType} | @if(surferCountry == "") {All Countries} else {@surferCountry} |</h1>
+	<p><b>Matches: <span class="badge">@results.getTotalRowCount()</span></b></p>
+	<table class="table table-striped table-bordered table-condensed table-hover">
+	  <thead>
+		  <tr>
+			  <th>Name</th>
+			  <th>Type</th>
+			  <th>Country</th>
+			  <th>Short Bio</th>
+		  </tr>
+		</thead>
+		@for(surfer <- results.getList()) {
+    <tr>
+      <td><a id="searchsurfer" href="../surfer/@surfer.getSlug()">@surfer.getName()</a></td>
+      <td>@surfer.getType()</td>
+      <td>@surfer.getCountry()</td>
+      <td>
+        @if(surfer.getBio().length > 40) {
+          @surfer.getBio().substring(0, 40) ...
+        } else {
+          @surfer.getBio()
+        }    
+      </td>
+    </tr>
+    }
+	</table>
+	@if(results.getTotalPageCount > 1) {
+    <ul class="pagination">
+      @if(results.hasPrev) {
+        <li><a href="@routes.Application.pageResults(key, surferType, surferCountry, results.prev.getPageIndex + 1) ">&laquo;</a></li>
+      } else {
+        <li class="disabled"><span>&laquo;</span></li>
+      }
+      @for(index <- 1 to results.getTotalPageCount) {
+        @if(index == results.getPageIndex + 1) {
+          <li class="active"><span>@index <span class="sr-only">(current)</span></span></li>
+        } else {
+          <li><a href="@routes.Application.pageResults(key, surferType, surferCountry, index)">@index</a></li>
+        }
+      }
+      @if(results.hasNext) {
+        <li><a href="@routes.Application.pageResults(key, surferType, surferCountry, results.next.getPageIndex + 1)">&raquo;</a></li>
+      } else {
+        <li class="disabled"><span>&raquo;</span></li>
+      }
+    </ul>
+  } else {
+    <ul class="pagination">
+      <li class="disabled"><span>&laquo;</span></li>
+      <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+      <li class="disabled"><span>&raquo;</span></li>
+    </ul>
+  }
+  </div>
+</div>
+</div>
+}

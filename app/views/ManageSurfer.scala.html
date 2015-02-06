@@ -1,0 +1,78 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, surferForm: Form[views.formdata.SurferFormData],
+ surferTypeMap: Map[String, Boolean], editing: Boolean, footstyles: List[String], searchForm: Form[views.formdata.SearchFormData],
+ surferTypes: Map[String, Boolean], countries: Map[String, Boolean])
+
+@import helper._
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo, searchForm, surferTypes, countries) {
+<div class="container">
+  @form(routes.Application.postSurfer(), 'class -> "form-horizontal") {
+  <div class="col-md-12">
+    <div class="well">
+    @text(surferForm("name"),
+          label = "Name",
+          placeholder = "Eddie Aikau",
+          help = "The name of the surfer.")
+    
+    @text(surferForm("home"),
+          label = "Home",
+          placeholder = "Kahului, Hawaii",
+          help = "The surfer's home town.")
+    
+    @text(surferForm("country"),
+          label = "Country",
+          placeholder = "USA",
+          help = "The surfer's country of origin.")
+      
+    @text(surferForm("awards"),
+          label = "Awards",
+          placeholder = "1977 Duke Kahanamoku Invitational Surfing Championship.",
+          help = "Optional: List of titles and surfing awards.")
+    
+    @radiobuttons(surferForm("footstyle"),
+                label = "Footstyle",
+                buttonNameList = footstyles,
+                help = "Select the surfer's footstyle.")
+    
+    @text(surferForm("carouselURL"),
+          label = "Carousel URL",
+          placeholder = "http://example.com/picture.jpg",
+          help = "A URL to the picture to be presented in the home page carousel of surfers.")
+    
+    @text(surferForm("bioURL"),
+          label = "Bio URL",
+          placeholder = "http://example.com/picture.jpg",
+          help = "A URL to the picture to be presented in the bio page for this surfer.")
+    
+    @bootstrap3.textarea(surferForm("bio"),
+            rows = "10",
+            label = "Bio",
+            placeholder = "Bio statement goes here.",
+            help = "One paragraph description of this surfer.")
+    
+    @slug(surferForm("slug"),
+          label = "Slug",
+          placeholder = "eddieaikau",
+          help = "Letters and digits to be used to identify the surfers in URLs; i.e. http://surferpedia.com/surfer/eddieaikau",
+          disabled = editing)
+
+    @bootstrap3.select(surferForm("type"),
+            label = "Type",
+            optionMap = surferTypeMap,
+            isMultiple = false,
+            help = "The type of surfer for placement in the menu.")
+            
+    @hidden(surferForm("isEditing"),
+            value = editing)
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="surfersubmit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    </div>
+  </div>
+  }
+</div>
+}

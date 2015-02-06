@@ -1,0 +1,54 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, surferForm: Form[views.formdata.SurferFormData], 
+searchForm: Form[views.formdata.SearchFormData], surferTypes: Map[String, Boolean], countries: Map[String, Boolean]) 
+
+@import helper._
+
+@Main(page, isLoggedIn, userInfo, searchForm, surferTypes, countries) {
+<div class="container">
+	@form(routes.Application.postSurfer(), 'class -> "form-horizontal") {
+	<div class="col-md-4">
+		<div class="well">
+			<div id="biourl" class="bio-image" style="background-image: url('@surferForm("bioURL").value');"></div>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="well">
+			<h2>@surferForm("name").value</h2>
+			<p><b>Home Town: </b>@surferForm("home").value</p>
+			<p><b>Country: </b>@surferForm("country").value</p>
+			<p><b>Awards: </b>@surferForm("awards").value</p>
+			<p><b>Footstyle: </b>@surferForm("footstyle").value</p>
+			<p><b>Biography: </b>@surferForm("bio").value</p>
+			@if(isLoggedIn) {
+			  <a id="edit" class="btn btn-warning btn-xs" href="@routes.Application.manageSurfer(surferForm("slug").value)">
+			  <span class="glyphicon glyphicon-edit"></span> Edit</a>
+			  <a id="deletesurfer" data-toggle="modal" href="#delete" class="btn btn-danger btn-xs pull-right">
+			  <span class="glyphicon glyphicon-trash"></span> Delete</a>
+			}
+			</div>
+		</div>
+	</div>
+	
+	<div id="delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-warning-sign"></span> 
+        Do you really want to delete @surferForm("name").value ?</h4>
+      </div>
+      <div class="modal-body">
+        <p>This change cannot be undone!</p>
+      </div>
+      <div class="modal-footer">
+        <button id="modalcancel" type="button" class="btn btn-default" data-dismiss="modal">No, cancel.</button>
+        <a id="modaldelete" type="button" class="btn btn-danger" href="@routes.Application.deleteSurfer(surferForm("slug").value)">
+        <span class="glyphicon glyphicon-trash"></span> Yes, Delete.</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+	
+	}
+</div>
+}

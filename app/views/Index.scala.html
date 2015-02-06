@@ -1,0 +1,31 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, searchForm: Form[views.formdata.SearchFormData],
+ surferTypes: Map[String, Boolean], countries: Map[String, Boolean]) 
+  
+@Main(page, isLoggedIn, userInfo, searchForm, surferTypes, countries) {
+<div class="container">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            @for((surfer, index) <- SurferDB.randomSurfers().zipWithIndex) {
+            <li data-target="#carousel-example-generic" data-slide-to="@index" @if(index== 0) {class="active"}></li> 
+            }
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            @for((surfer, index) <-SurferDB.randomSurfers().zipWithIndex) {
+            <div @if(index== 0) {class="item active" } else {class="item"}>
+                <div class="carousel-image" style="background-image: url('@surfer.getCarouselURL');"></div>
+                <div class="carousel-caption">
+                    <a href="../surfer/@surfer.getSlug()"><h3>@surfer.getName()</h3></a>
+                </div>
+            </div>
+            }
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="icon-prev"></span>
+        </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="icon-next"></span>
+        </a>
+    </div>
+</div>
+}

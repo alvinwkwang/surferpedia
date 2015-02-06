@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET     /new                        controllers.Application.newSurfer()
+GET     /surfer/:slug               controllers.Application.getSurfer(slug)
+GET     /random/                    controllers.Application.getRandomSurfer()
+GET     /surfer/:slug/delete        controllers.Application.deleteSurfer(slug)
+GET     /surfer/:slug/edit          controllers.Application.manageSurfer(slug)
+GET     /updates                    controllers.Application.showUpdates()
+POST    /post                       controllers.Application.postSurfer()
+GET     /login                      controllers.Application.login()
+POST    /login                      controllers.Application.postLogin()
+GET     /logout                     controllers.Application.logout()
+POST    /results                    controllers.Application.showResults(page: Integer ?= 0)
+GET     /results                    controllers.Application.pageResults(key: String, type: String, country: String, page: Integer ?= 0)
+GET     /map                        controllers.Application.showMap()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

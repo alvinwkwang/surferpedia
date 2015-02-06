@@ -1,0 +1,14 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, loginForm: Form[views.formdata.LoginFormData],
+searchForm: Form[views.formdata.SearchFormData], surferTypes: Map[String, Boolean], countries: Map[String, Boolean])
+
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo, searchForm, surferTypes, countries) {
+   <div class="container">
+     @loginform(routes.Application.postLogin(), loginForm("email"), loginForm("password"))
+     
+     @if(!models.UserInfoDB.adminDefined()) {
+           <div class="alert alert-danger">WARNING: Admin credentials undefined!</div>
+     }
+   </div>
+}

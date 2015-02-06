@@ -2,9 +2,9 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import play.db.ebean.Model;
 
@@ -33,7 +33,7 @@ public class Surfer extends Model {
   /** Image URL for biography. */
   private String bioURL;
   /** The surfer's biography. */
-  @Lob
+  @Column(columnDefinition = "TEXT")
   private String bio;
   /** The surfer's slug field. */
   private String slug;

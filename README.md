@@ -7,12 +7,6 @@ A Dynamic Play application that provides an encyclopedia of surfers.
 Installation
 ============
 
-Environmental Variables
------
-* Create user and password environment variables:
-  * SURFERPEDIA_ADMIN_EMAIL=example@example.com
-  * SURFERPEDIA_ADMIN_PASSWORD=password
-
 Play
 -----
 * Download and unzip the .zip file.

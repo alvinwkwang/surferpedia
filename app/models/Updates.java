@@ -20,6 +20,7 @@ public class Updates extends Model {
   private String date;
   private String action;
   private String name;
+  private String slug;
   
   /** Many Updates to One UserInfo. **/
   @ManyToOne
@@ -49,12 +50,13 @@ public class Updates extends Model {
    * Constructor for updates.
    * @param date The date.
    * @param action The action done.
-   * @param name The surfers name.
+   * @param name The surfer's name.
    */
   public Updates(String date, String action, String name) {
-    this.date = date;
-    this.action = action;
-    this.name = name;
+    this.setDate(date);
+    this.setAction(action);
+    this.setName(name);
+    this.setSlug(name);
   }
   /**
    * @return the date
@@ -105,5 +107,30 @@ public class Updates extends Model {
    */
   public void setId(long id) {
     this.id = id;
+  }
+
+  /**
+   * @return the slug
+   */
+  public String getSlug() {
+    return slug;
+  }
+
+  /**
+   * @param name the name to slugify
+   */
+  public void setSlug(String name) {
+    this.slug = slugify(name);
+  }
+  
+  /**
+   * Slugify surfer name.
+   * 
+   * ex: "Eddie Aikau" -> "eddieaikau"
+   * @param name
+   * @return
+   */
+  public String slugify(String name) {
+       return name.replaceAll("\\s+","").toLowerCase();
   }
 }

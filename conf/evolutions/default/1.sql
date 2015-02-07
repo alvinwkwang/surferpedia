@@ -23,6 +23,7 @@ create table updates (
   date                      varchar(255),
   action                    varchar(255),
   name                      varchar(255),
+  slug                      varchar(255),
   user_info_id              bigint,
   surfer_id                 bigint,
   constraint pk_updates primary key (id))

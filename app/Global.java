@@ -1,8 +1,13 @@
+import static play.mvc.Results.notFound;
 import models.SurferDB;
 import models.UserInfoDB;
 import play.Application;
 import play.GlobalSettings;
+import play.libs.F.Promise;
+import play.mvc.SimpleResult;
+import play.mvc.Http.RequestHeader;
 import views.formdata.SurferFormData;
+import views.html.InvalidUrl;
 
 /**
  * Initializes surfers on start up.
@@ -11,6 +16,15 @@ import views.formdata.SurferFormData;
  * 
  */
 public class Global extends GlobalSettings {
+  
+  /**
+   * Handles invalid urls.
+   * 
+   */
+  public Promise<SimpleResult> onHandlerNotFound(RequestHeader request) {
+    return Promise.<SimpleResult> pure(notFound(InvalidUrl.render("Error 404")));
+  }
+  
   /**
    * Initializes surfers.
    * 

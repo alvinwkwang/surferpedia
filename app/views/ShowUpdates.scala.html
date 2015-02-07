@@ -19,7 +19,7 @@ searchForm: Form[views.formdata.SearchFormData], surferTypes: Map[String, Boolea
          <tr>
          <td>@update.getDate()</td>
          <td>@update.getAction()</td>
-         <td>@update.getName()</td>
+         <td><a href="../surfer/@update.getSlug()">@update.getName()</a></td>
          </tr>
        }
      </table>

@@ -25,6 +25,7 @@ import views.html.ShowSurfer;
 import views.html.ShowUpdates;
 import views.html.SearchResults;
 import views.html.SurfMap;
+import views.html.AllSurfers;
 
 /**
  * Implements the controllers for this application.
@@ -44,6 +45,21 @@ public class Application extends Controller {
   }
 
   /**
+   * Returns all surfers.
+   * 
+   * @return The resulting all surfers page.
+   */
+  public static Result allSurfers() {
+    SearchFormData searchData = new SearchFormData();
+    Form<SearchFormData> searchFormData = Form.form(SearchFormData.class).fill(searchData);
+    List<Surfer> maleSurfers = SurferDB.getSurfers("Male");
+    List<Surfer> femaleSurfers = SurferDB.getSurfers("Female");
+    List<Surfer> gromSurfers = SurferDB.getSurfers("Grom");
+    return ok(AllSurfers.render("All Surfers", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), searchFormData,
+        SurferTypes.getTypes(), Countries.getCountries(), maleSurfers, femaleSurfers, gromSurfers));
+  }
+  
+  /**
    * Create a new surfer page.
    * 
    * @return The New Surfer page.
@@ -60,6 +76,7 @@ public class Application extends Controller {
         formData, surferTypeMap, false, footstyles, searchFormData, SurferTypes.getTypes(), Countries.getCountries()));
   }
 
+  
   /**
    * Manage surfer's page.
    * 

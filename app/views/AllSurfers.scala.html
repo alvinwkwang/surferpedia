@@ -1,0 +1,51 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, searchForm: Form[views.formdata.SearchFormData], surferTypes:
+Map[String, Boolean], countries: Map[String, Boolean], maleSurfers: List[models.Surfer], femaleSurfers:
+List[models.Surfer], gromSurfers: List[models.Surfer]) 
+
+@Main(page, isLoggedIn, userInfo, searchForm, surferTypes, countries) {
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <div class="col-md-4">
+        <h3 class="typeAll">Males</h3>
+        @for(maleSurfer <- maleSurfers) {
+        <figure class="gallery-item">
+          <a href="../surfer/@maleSurfer.getSlug()"> <img src="@maleSurfer.getBioURL()"
+            class="img-thumbnail surferThumbnail">
+            <figcaption class="img-title">
+              <h4>@maleSurfer.getName()</h4>
+            </figcaption>
+          </a>
+        </figure>
+        }
+      </div>
+      <div class="col-md-4">
+        <h3 class="typeAll">Females</h3>
+        @for(femaleSurfer <- femaleSurfers) {
+        <figure class="gallery-item">
+          <a href="../surfer/@femaleSurfer.getSlug()"> <img src="@femaleSurfer.getBioURL()"
+            class="img-thumbnail surferThumbnail">
+            <figcaption class="img-title">
+              <h4>@femaleSurfer.getName()</h4>
+            </figcaption>
+          </a>
+        </figure>
+        }
+      </div>
+      <div class="col-md-4">
+        <h3 class="typeAll">Groms</h3>
+        @for(gromSurfer <- gromSurfers) {
+        <figure class="gallery-item">
+          <a href="../surfer/@gromSurfer.getSlug()"> <img src="@gromSurfer.getBioURL()"
+            class="img-thumbnail surferThumbnail">
+            <figcaption class="img-title">
+              <h4>@gromSurfer.getName()</h4>
+            </figcaption>
+          </a>
+        </figure>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+}

@@ -54,6 +54,16 @@ public class SurferDB {
   }
 
   /**
+   * Returns a list of surfers of certain type (Male, Female, or Grom)
+   * 
+   * @param type surfer type
+   * 
+   * @return list of surfers by type
+   */
+  public static List<Surfer> getSurfers(String type) {
+    return Surfer.find().where().eq("type", type).findList();
+  }
+  /**
    * Returns a surfer associated with the passed slug.
    * 
    * @param slug The slug.

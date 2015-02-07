@@ -5,6 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /new                        controllers.Application.newSurfer()
+GET     /allsurfers                 controllers.Application.allSurfers()
 GET     /surfer/:slug               controllers.Application.getSurfer(slug)
 GET     /random/                    controllers.Application.getRandomSurfer()
 GET     /surfer/:slug/delete        controllers.Application.deleteSurfer(slug)

@@ -1,12 +1,8 @@
-import static play.mvc.Results.notFound;
-import static play.mvc.Results.badRequest;
 import models.SurferDB;
 import models.UserInfoDB;
 import play.Application;
 import play.GlobalSettings;
-import play.libs.F.Promise;
-import play.mvc.SimpleResult;
-import play.mvc.Http.RequestHeader;
+
 import views.formdata.SurferFormData;
 
 /**
@@ -273,7 +269,7 @@ public class Global extends GlobalSettings {
       SurferDB.addSurfer(new SurferFormData("Bianca Buitendag", "Victoria Bay, South Africa", "South Africa", 
           "2012 ASP Womens Star Ranking (2nd place), 2011 Billabong ASP World Junior Surfing Champion", 
           "http://www.zigzag.co.za/wp-content/gallery/womens-day/9bianca3.jpg", 
-          "http://a0.twimg.com/profile_images/378800000115523669/82d7e344b5c14bf9217bc63be8536621.jpeg", 
+          "http://www.freaksurfmag.com/Images/bianca_swatch_girls_pro_winner.jpg", 
           "Bianca grew up in a Surfing family with two brothers, surfing from age 7.  She learned to surf in "
               + "the beach breaks of the Strand as well as at the Jongensfontein point break.  The family then moved "
               + "to Victoria Bay when she was age 11.  It was here that Bianca started focusing more on competitive "
@@ -285,7 +281,7 @@ public class Global extends GlobalSettings {
       SurferDB.addSurfer(new SurferFormData("Sofia Mulanovich", "Lima, Peru", "Peru", 
           "2004 ASP Women’s World Champion", 
           "http://a4.espncdn.com/photo/2013/0924/as_surf_riss_2048.jpg", 
-          "http://www.fanphobia.net/uploads/actors/16940/sofia-mulanovich-profile-picture.jpg", 
+          "http://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Mulanovich.jpeg/220px-Mulanovich.jpeg", 
           "Professional surfer Sofia Mulanovich grew up in Punta Hermosa, a small town outside of Lima, where she "
               + "rode a body board at 5 and graduated to a short board by age 9. At 12, she sharpened her lethal "
               + "backside skills on Peru's many perfect lefts. Encouraged and nurtured by her family and friends, "
@@ -412,8 +408,8 @@ public class Global extends GlobalSettings {
       
       SurferDB.addSurfer(new SurferFormData("Quincy Davis", "Montauk, New York", "United States", 
           "2009 Volcom Qualifying Series (Girls)", 
-          "http://www.oakley.com/a/3f/3b/BAh7CGkKIgo4MDB4MGkLbCsHO16OUGkIaQMhBAM.jpg",
-          "http://www.oakley.com/a/56/ef/BAh7CGkKIgo0NjJ4MGkLbCsHPSN2UGkIaQPQ4wI.jpg", 
+          "http://waxedradio.com/wp-content/uploads/2014/09/5.jpg",
+          "http://www.surfingamerica.org/cms/wp-content/uploads/2011/01/resize-13.jpeg", 
           "Quincy was born in Montauk, New York; at just 7-years-old she started surfing. With the shore as her "
               + "backyard, Quincy spent long summer days at the beach with her family who were always surfing. After "
               + "becoming bored of swimming and running around she decided to give surfing a try.[2] She picked it up "

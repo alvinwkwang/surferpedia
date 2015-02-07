@@ -38,6 +38,7 @@ countries: Map[String, Boolean])(content: Html)
 			</div>
 			<div class="collapse navbar-collapse">
 			  <ul class="nav navbar-nav">
+          <li><a id="allsurfers" href="@routes.Application.allSurfers()"><span class="glyphicon glyphicon-list"></span> All Surfers</a></li>
 			    <li><a id="map" href="@routes.Application.showMap()"><span class="glyphicon glyphicon-globe"></span> Map</a></li>
 			  </ul>
 				@if(isLoggedIn) {
@@ -87,6 +88,8 @@ countries: Map[String, Boolean])(content: Html)
 	<!-- Load Bootstrap JavaScript components. HTMLUnit (used in testing) requires JQuery 1.8.3 or below). -->
 	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="@routes.Assets.at("javascripts/hoverimage.js")"></script>
+
 </body>
 </html>
 
